@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MessageProcessorServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" value="queue.rabbitmq, keycloak, email.msgraph, telegram.botapi" />
+    <envs>
+      <env name="server.port" value="8082" />
+    </envs>
+    <module name="message-processor-service" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="io.openleap.mps.MessageProcessorServiceApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

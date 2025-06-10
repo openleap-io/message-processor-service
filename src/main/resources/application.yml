@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: message-processor-service
+
+---
+spring:
+  cloud:
+    config:
+      label: main
+  config:
+    activate:
+      on-profile: queue.rabbitmq, keycloak, email.msgraph, telegram.botapi
+    import: configserver:http://${CONFIG_SERVER_USERNAME:user}:${CONFIG_SERVER_PASSWORD:sa}@${CONFIG_SERVER_HOST:localhost}:${CONFIG_SERVER_PORT:8099}?fail-fast=true&max-attempts=10&max-interval=1500&multiplier=1.2&initial-interval=1100
+
+---
+spring:
+  cloud:
+    config:
+      enabled: false
+  config:
+    activate:
+      on-profile: logger
+logging:
+  level:
+    root: INFO
+    io.openleap: DEBUG
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    enabled: false

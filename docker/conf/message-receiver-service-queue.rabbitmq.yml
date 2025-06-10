@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    username: guest
+    password:
+    host: rabbitmq
+    port: 5672
+message-receiver-service:
+  rabbitmq:
+    exchanges:
+      messagesExchange:
+        name: messages-exchange
+        queues:
+          teamsChannelQueue:
+            name: messages.channel.teams
+            routingKeys:
+              - messages.channel.teams.add
+          slackChannelQueue:
+            name: messages.channel.slack
+            routingKeys:
+              - messages.channel.slack.add
+          emailChannelQueue:
+            name: messages.channel.email
+            routingKeys:
+              - messages.channel.email.add
+          telegramChannelQueue:
+            name: messages.channel.telegram
+            routingKeys:
+              - messages.channel.telegram.add

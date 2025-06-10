@@ -1,0 +1,7 @@
+microsoft:
+  azure:
+    client-id:
+    client-secret:
+    tenant-id:
+    scope: https://graph.microsoft.com/.default
+    sender-id:
