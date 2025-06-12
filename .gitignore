@@ -23,3 +23,11 @@
 hs_err_pid*
 replay_pid*
 /target/**
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/caches/
+.idea/contentModel.xml
+.idea/aws.xml
+
