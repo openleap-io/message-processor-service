@@ -10,6 +10,7 @@ services:
       - ./static/openapi.yaml:/app/openapi.yaml
   message-processor-service:
     image: docker.io/openleap/io.openleap.message-processor-service:latest
+    pull_policy: always
     container_name: message-processor-service
     depends_on:
       - openleap-gateway
