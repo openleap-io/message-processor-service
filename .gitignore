@@ -30,4 +30,4 @@ replay_pid*
 .idea/caches/
 .idea/contentModel.xml
 .idea/aws.xml
-
+docker/data/**
