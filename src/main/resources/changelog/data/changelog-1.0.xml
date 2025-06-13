@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+    <changeSet id="202506131406" author="kiril.arsov">
+        <sql><![CDATA[
+            INSERT INTO public.template(name, subject, body)VALUES ('EN_Example_Template', 'Welcome to communication services!', '<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to communication services!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        /* custom fonts */
+        @font-face {
+            font-family: Akkurat;
+            src: url(''''https://github.com/adamwdraper/styles/blob/master/fonts/icomoon.eot'''');
+            src: url(''''https://github.com/adamwdraper/styles/blob/master/fonts/icomoon.eot?#iefix'''') format(''''embedded-opentype'''');
+            src: url(''''https://github.com/opensourcepos/opensourcepos/blob/master/public/fonts/Arial.woff'''') format(''''woff'''');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: Noe;
+            src: url(''''https://github.com/adamwdraper/styles/blob/master/fonts/icomoon.eot'''');
+            src: url(''''https://github.com/adamwdraper/styles/blob/master/fonts/icomoon.eot?#iefix'''') format(''''embedded-opentype'''');
+            src: url(''''https://github.com/opensourcepos/opensourcepos/blob/master/public/fonts/Arial.woff'''') format(''''woff'''');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* CLIENT-SPECIFIC STYLES */
+        body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+        table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+        img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+        /* RESET STYLES */
+        img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+        table{border-collapse: collapse !important;}
+        body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;                  font-size:18px;
+            line-height:20px;
+            color:#1d1d1d;
+            font-family:Akkurat, Arial, sans-serif;}
+
+        /* custom styles */
+        h1 {
+            font-size:32px;
+            line-height:35px;
+            color:#1d1d1d;
+            font-family:Noe, Arial, sans-serif;
+        }
+        h2 {
+            font-size:20px;
+            line-height:23px;
+            color:#1d1d1d;
+            font-family:Noe, Arial, sans-serif;
+        }
+        p {
+            font-size:18px;
+            line-height:20px;
+            color:#1d1d1d;
+            font-family:Akkurat, Arial, sans-serif;
+        }
+        a {
+            text-decoration : underline;
+            color : #1d1d1d;
+        }
+
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* MOBILE STYLES */
+        @media screen and (max-width: 525px) {
+
+            /* ALLOWS FOR FLUID TABLES */
+            .wrapper {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* ADJUSTS LAYOUT OF LOGO IMAGE */
+            .logo img {
+                margin: 0 auto !important;
+            }
+
+            /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+            .mobile-hide {
+                display: none !important;
+            }
+
+            .img-max {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            /* FULL-WIDTH TABLES */
+            .responsive-table {
+                width: 100% !important;
+            }
+
+            /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+            .padding {
+                padding: 10px 5% 15px 5% !important;
+            }
+
+            .padding-meta {
+                padding: 30px 5% 0px 5% !important;
+                text-align: center;
+            }
+
+            .padding-copy {
+                g: 10px 5% 10px 5% !important;
+                text-align: center;
+            }
+
+            .no-padding {
+                padding: 0 !important;
+            }
+
+            .section-padding {
+                padding: 50px 15px 50px 15px !important;
+            }
+
+            /* ADJUST BUTTONS ON MOBILE */
+            .mobile-button-container {
+                margin: 0 auto;
+                width: 100% !important;
+            }
+
+            .mobile-button {
+                padding: 15px !important;
+                border: 0 !important;
+                font-size: 16px !important;
+                display: block !important;
+            }
+
+        }
+
+        /* ANDROID CENTER FIX */
+        div[style*="margin: 16px 0;"] { margin: 0 !important; }
+    </style>
+    <!--[if gte mso 12]>
+    <style type="text/css">
+        .mso-right {
+            padding-left: 20px;
+        }
+    </style>
+    <![endif]-->
+    <!--[if mso]>
+    <style type="text/css">
+        @media (prefers-color-scheme:  light) {
+            html {
+                background: #FFFFFF !important;
+                font-color: #1d1d1d !important;
+            }
+        }
+    </style>
+    <![endif]-->
+</head>
+<body style="margin: 0 !important; padding: 0 !important;">
+
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td bgcolor="#616161" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="700">
+                <tr>
+                    <td align="center" valign="top" width="700">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;" class="wrapper">
+                <tr>
+                    <td align="center" valign="top" style="padding: 35px 0;" class="logo">
+                        <img alt="Logo" src="https://www.bb-online.de/wp-content/uploads/2022/03/bb-unternehmensberatung-logo-favion.png" height="50" width="299" style="display: block;" border="0">
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="700">
+                <tr>
+                    <td align="center" valign="top" width="700">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;" class="responsive-table">
+              <tr>
+                  <td>
+                      <h1 style="font-size:32px; line-height:35px; color:#1d1d1d; font-weight: normal; font-family:Noe, Arial, sans-serif;">Welcome ${params.firstname}, ${params.lastname} to communication services!</h1>
+                      <p class="p" style="font-size: 18px; color: #1d1d1d; line-height: 24px; mso-line-height-rule: exactly">This is a template example</p>
+
+                  </td>
+              </tr>
+              <tr>
+                  <td class="cta-btn" height="35" valign="middle" align="left">
+                      <br><br>
+                      <!--[if mso]>
+                      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://idptest.datapart-factoring.de/" style="height:40px;v-text-anchor:middle;width:150px;" stroke="f" fillcolor="#1d1d1d">
+                          <w:anchorlock/>
+                          <center>
+                      <![endif]-->
+                      <a href="https://idptest.datapart-factoring.de/" style="background-color:#1d1d1d;color:#ffffff;display:inline-block;FONT-SIZE: 18px; TEXT-DECORATION: none; TEXT-TRANSFORM: none; DISPLAY: inline-block; LINE-HEIGHT: 35px; background-color: #1d1d1d;text-align:center;width:150px;-webkit-text-size-adjust:none;">LOG IN</a>
+                      <!--[if mso]>
+                      </center>
+                      </v:rect>
+                      <![endif]-->
+                  </td>
+              </tr>
+              <tr>
+                  <td style="FONT-SIZE: 18px; COLOR: #1d1d1d; LINE-HEIGHT: 24px; mso-line-height-rule: exactly" valign="top" align="left">
+                      <br><br>
+                      <p>If you have any questions, please contact customer service. </p>
+                      <p>Best wishes, <br />Openleap</p>
+                  </td>
+              </tr>
+          </table>
+            <!--[if (gte mso 9)|(IE)]>
+        </td>
+        </tr>
+        </table>
+            <![endif]-->
+        </td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#1d1d1d" align="left" style="padding: 20px 20px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="700">
+                <tr>
+                    <td align="center" valign="top" width="700">
+            <![endif]-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 700px;" class="responsive-table">
+                <tr>
+                  <td style="FONT-SIZE: 13px; FONT-FAMILY: Arial, sans-serif; COLOR: #ffffff" valign="middle" align="left">&nbsp;</td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+</body>
+</html>');
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

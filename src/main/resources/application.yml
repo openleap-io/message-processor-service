@@ -1,7 +1,10 @@
 spring:
   application:
     name: message-processor-service
-
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:postgres}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
 ---
 spring:
   cloud:
@@ -14,6 +17,8 @@ spring:
 
 ---
 spring:
+  liquibase:
+    enabled: false
   cloud:
     config:
       enabled: false

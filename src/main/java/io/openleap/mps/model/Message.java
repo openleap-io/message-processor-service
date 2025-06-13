@@ -64,4 +64,12 @@ public abstract class Message {
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
+    }
 }

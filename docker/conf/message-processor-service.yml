@@ -14,6 +14,9 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://auth-server:8899/oauth2/jwks
+  liquibase:
+    enabled: true
+    change-log: classpath:changelog/changelog-prod.xml
 oleap:
   eureka:
     url: ${oleap.srv.protocol}://${oleap.srv.user.name}:${oleap.srv.user.password}@${oleap.srv.hostname}:${oleap.srv.port}

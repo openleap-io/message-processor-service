@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="202506131405" author="kiril.arsov">
+        <sql>
+            CREATE SEQUENCE template_id_seq;
+            CREATE TABLE public.template
+            (
+                id bigint NOT NULL DEFAULT nextval('template_id_seq'::regclass),
+                name character varying(60),
+                subject character varying(240),
+                body TEXT,
+                CONSTRAINT template_pk PRIMARY KEY (id)
+            )
+                WITH (
+                    OIDS=FALSE
+                    );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
