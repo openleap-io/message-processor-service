@@ -9,7 +9,7 @@ services:
     volumes:
       - ./static/openapi.yaml:/app/openapi.yaml
   message-processor-service:
-    image: remove-me:latest
+    image: docker.io/openleap/io.openleap.message-processor-service:latest
     container_name: message-processor-service
     depends_on:
       - openleap-gateway
