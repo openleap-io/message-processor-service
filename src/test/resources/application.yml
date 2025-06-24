@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: logger
+  application:
+    name: message-processor-service
+  cloud:
+    config:
+      enabled: false
+  config:
+    import: classpath:config/mps-service-default.yml
+eureka:
+  client:
+    enabled: false

@@ -1,0 +1,5 @@
+template:
+  - id: 1
+    name: '123'
+    subject: 'Test Template'
+    body: 'This is a test template.'
