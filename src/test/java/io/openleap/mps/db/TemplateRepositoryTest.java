@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Profile;
 @Profile("logger")
 @DBRider
 @DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE)
-public class TemplateRepositoryIT extends BaseTest {
+public class TemplateRepositoryTest extends BaseTest {
 
     @Autowired
     private TemplateRepository repository;
