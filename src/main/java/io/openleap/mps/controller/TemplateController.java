@@ -64,6 +64,9 @@ public class TemplateController {
                     content = @Content(examples = @ExampleObject(value = "{ \"error\": \"Invalid input\" }")))
     })
     public ResponseEntity createTamplateByName(@Valid @RequestBody TemplateRequest templateRequest) {
+        if (templateRequest == null || templateRequest.getName() == null) {
+            ResponseEntity.badRequest();
+        }
         try {
             Template template = templateRepository.findByName(templateRequest.getName()).orElse(null);
             if (template != null) {
