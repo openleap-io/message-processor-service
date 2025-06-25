@@ -46,6 +46,9 @@ public class MsGraphEmailUtils {
     }
 
     public static void addAttachment(Message message, List<io.openleap.mps.model.Attachment> files) {
+        if (files == null || files.isEmpty()) {
+            return;
+        }
 
         LinkedList<Attachment> attachmentsList = files.stream().map(file -> {
             FileAttachment fileAttachment = new FileAttachment();

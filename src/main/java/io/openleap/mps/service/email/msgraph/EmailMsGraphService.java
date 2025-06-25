@@ -4,6 +4,8 @@ import com.microsoft.graph.models.Message;
 import com.microsoft.graph.models.UserSendMailParameterSet;
 import com.microsoft.graph.requests.GraphServiceClient;
 import io.openleap.mps.config.FreemarkerProcessor;
+import io.openleap.mps.exception.ProcessingException;
+import io.openleap.mps.exception.TemplateNotFoundException;
 import io.openleap.mps.model.MessageType;
 import io.openleap.mps.model.TemplateMessage;
 import io.openleap.mps.model.message.EmailMessage;
@@ -56,15 +58,13 @@ public class EmailMsGraphService implements EmailService {
         String body = emailRequest.getMessage().getBody();
         if (emailRequest.getMessage().getMessageType().equals(MessageType.TEMPLATE)) {
             TemplateMessage templateMessage = (TemplateMessage) emailRequest.getMessage();
-
             Optional<Template> template = templateRepository.findByName(templateMessage.getName());
             if (template.isPresent()) {
-
                 subject = template.get().getSubject();
                 body = freemarkerProcessor.process(template.get().getBody(), (Map) templateMessage.getTemplateParams());
             } else {
                 logger.error("Template with name {} not found", templateMessage.getName());
-                throw new RuntimeException("Template not found");
+                throw new TemplateNotFoundException("Template not found: ".concat(templateMessage.getName()));
             }
         }
         Message message = MsGraphEmailUtils.createMessage(subject, body);
@@ -81,7 +81,7 @@ public class EmailMsGraphService implements EmailService {
             logger.debug("Email message sent successfully");
         } catch (Exception error) {
             logger.error("Error sending email: {}", error.getMessage());
-            error.printStackTrace();
+            throw new ProcessingException("Error sending email: " + error.getMessage(), error);
         }
     }
 }
