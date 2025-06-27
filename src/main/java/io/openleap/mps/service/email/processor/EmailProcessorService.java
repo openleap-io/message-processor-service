@@ -19,6 +19,10 @@ public class EmailProcessorService {
     @RabbitListener(queues = RabbitMQConfig.EMAIL_QUEUE)
     public void listen(EmailMessage message) {
         logger.debug("Processing email message: {}", message);
-        emailService.send(message);
+        try {
+            emailService.send(message);
+        } catch (Exception e) {
+            logger.error("Failed to process email message: {}", message, e);
+        }
     }
 }
