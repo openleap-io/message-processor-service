@@ -14,12 +14,32 @@ import java.util.stream.Collectors;
 public class MsGraphEmailUtils {
     public static void addRecipientsToMessage(String commaSeparatedRecipients, Message message) {
         List<Recipient> recipients = new ArrayList<>();
-        String[] emailAddresses = commaSeparatedRecipients.split(",");
+        String[] emailAddresses = commaSeparatedRecipients.split("[;,:]+");
         for (String email : emailAddresses) {
             Recipient recipient = createRecipient(email.trim());
             recipients.add(recipient);
         }
         message.toRecipients = recipients;
+    }
+
+    public static void addCCRecipientsToMessage(String commaSeparatedRecipients, Message message) {
+        List<Recipient> recipients = new ArrayList<>();
+        String[] emailAddresses = commaSeparatedRecipients.split("[;,:]+");
+        for (String email : emailAddresses) {
+            Recipient recipient = createRecipient(email.trim());
+            recipients.add(recipient);
+        }
+        message.ccRecipients = recipients;
+    }
+
+    public static void addBCCRecipientsToMessage(String commaSeparatedRecipients, Message message) {
+        List<Recipient> recipients = new ArrayList<>();
+        String[] emailAddresses = commaSeparatedRecipients.split("[;,:]+");
+        for (String email : emailAddresses) {
+            Recipient recipient = createRecipient(email.trim());
+            recipients.add(recipient);
+        }
+        message.bccRecipients = recipients;
     }
 
     private static Recipient createRecipient(String email) {

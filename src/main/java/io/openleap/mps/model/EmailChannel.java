@@ -17,6 +17,9 @@ public class EmailChannel extends Channel {
     }
 
     @Schema(description = "List of email addresses to send to", example = "<EMAIL>")
+    @JsonProperty("cc")
+    String cc;
+    @Schema(description = "List of email addresses to send to", example = "<EMAIL>")
     @JsonProperty("bcc")
     String bcc;
 
@@ -26,5 +29,13 @@ public class EmailChannel extends Channel {
 
     public void setBcc(String bcc) {
         this.bcc = bcc;
+    }
+
+    public String getCc() {
+        return cc;
+    }
+
+    public void setCc(String cc) {
+        this.cc = cc;
     }
 }
