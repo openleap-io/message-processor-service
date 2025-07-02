@@ -73,7 +73,7 @@ public class EmailMsGraphService implements EmailService {
             MsGraphEmailUtils.addCCRecipientsToMessage(emailRequest.getChannel().getCc(), message);
         }
         if (emailRequest.getChannel().getBcc() != null) {
-            MsGraphEmailUtils.addCCRecipientsToMessage(emailRequest.getChannel().getBcc(), message);
+            MsGraphEmailUtils.addBCCRecipientsToMessage(emailRequest.getChannel().getBcc(), message);
         }
         MsGraphEmailUtils.addAttachment(message, emailRequest.getMessage().getAttachments());
         return message;
