@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,7 +74,7 @@ public class MsGraphEmailUtils {
         LinkedList<Attachment> attachmentsList = files.stream().map(file -> {
             FileAttachment fileAttachment = new FileAttachment();
             fileAttachment.name = file.getName();
-            fileAttachment.contentBytes = file.getBase64Data().getBytes(StandardCharsets.UTF_8);
+            fileAttachment.contentBytes = Base64.getDecoder().decode(file.getBase64Data());
             fileAttachment.oDataType = "#microsoft.graph.fileAttachment";
             fileAttachment.contentType = file.getContentType();
             return fileAttachment;
