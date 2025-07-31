@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-@Profile("logger")
+@Profile({"logger", "email.logger"})
 @Service
 public class EmailLoggerService implements EmailService {
     Logger logger = LoggerFactory.getLogger(EmailLoggerService.class);

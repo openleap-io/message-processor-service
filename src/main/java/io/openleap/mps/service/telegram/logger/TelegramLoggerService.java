@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 
-@Profile("logger")
+@Profile({"logger", "telegram.logger"})
 @Service
 public class TelegramLoggerService implements TelegramService {
     Logger logger = LoggerFactory.getLogger(TelegramLoggerService.class);
