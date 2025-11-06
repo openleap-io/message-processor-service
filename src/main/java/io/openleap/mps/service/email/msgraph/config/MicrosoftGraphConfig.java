@@ -2,14 +2,11 @@ package io.openleap.mps.service.email.msgraph.config;
 
 import com.azure.identity.ClientSecretCredential;
 import com.azure.identity.ClientSecretCredentialBuilder;
-import com.microsoft.graph.authentication.TokenCredentialAuthProvider;
-import com.microsoft.graph.requests.GraphServiceClient;
+import com.microsoft.graph.serviceclient.GraphServiceClient;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
-import java.util.List;
 
 @Configuration
 @Profile("email.msgraph")
@@ -30,13 +27,7 @@ public class MicrosoftGraphConfig {
                     .clientSecret(clientProperties.getClientSecret())
                     .tenantId(clientProperties.getTenantId())
                     .build();
-            final TokenCredentialAuthProvider tokenCredentialAuthProvider = new TokenCredentialAuthProvider(
-                    List.of(clientProperties.getScope()),
-                    clientSecretCredential
-            );
-            return GraphServiceClient.builder()
-                    .authenticationProvider(tokenCredentialAuthProvider)
-                    .buildClient();
+            return new GraphServiceClient(clientSecretCredential);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
