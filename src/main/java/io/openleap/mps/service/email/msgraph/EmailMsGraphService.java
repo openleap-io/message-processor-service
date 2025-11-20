@@ -1,8 +1,8 @@
 package io.openleap.mps.service.email.msgraph;
 
 import com.microsoft.graph.models.Message;
-import com.microsoft.graph.models.UserSendMailParameterSet;
-import com.microsoft.graph.requests.GraphServiceClient;
+import com.microsoft.graph.serviceclient.GraphServiceClient;
+import com.microsoft.graph.users.item.sendmail.SendMailPostRequestBody;
 import io.openleap.mps.config.FreemarkerProcessor;
 import io.openleap.mps.exception.ProcessingException;
 import io.openleap.mps.exception.TemplateNotFoundException;
@@ -43,14 +43,13 @@ public class EmailMsGraphService implements EmailService {
     }
 
     private void sendEmailViaGraph(String sender, Message message) {
-        graphServiceClient.users(sender)
-                .sendMail(UserSendMailParameterSet
-                        .newBuilder()
-                        .withMessage(message)
-                        .withSaveToSentItems(true)
-                        .build())
-                .buildRequest()
-                .post();
+        var mailBodyRequest = new SendMailPostRequestBody();
+        mailBodyRequest.setMessage(message);
+        mailBodyRequest.setSaveToSentItems(true);
+        graphServiceClient.users()
+                .byUserId(sender)
+                .sendMail()
+                .post(mailBodyRequest);
     }
 
     private Message createEmailMessage(EmailMessage emailRequest) {

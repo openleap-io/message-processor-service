@@ -1,14 +1,10 @@
 package io.openleap.mps.service.email.msgraph;
 
 import com.microsoft.graph.models.*;
-import com.microsoft.graph.requests.AttachmentCollectionPage;
-import com.microsoft.graph.requests.AttachmentCollectionResponse;
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +16,7 @@ public class MsGraphEmailUtils {
             Recipient recipient = createRecipient(email.trim());
             recipients.add(recipient);
         }
-        message.toRecipients = recipients;
+        message.setToRecipients(recipients);
     }
 
     public static void addCCRecipientsToMessage(String commaSeparatedRecipients, Message message) {
@@ -30,7 +26,7 @@ public class MsGraphEmailUtils {
             Recipient recipient = createRecipient(email.trim());
             recipients.add(recipient);
         }
-        message.ccRecipients = recipients;
+        message.setCcRecipients(recipients);
     }
 
     public static void addBCCRecipientsToMessage(String commaSeparatedRecipients, Message message) {
@@ -40,29 +36,29 @@ public class MsGraphEmailUtils {
             Recipient recipient = createRecipient(email.trim());
             recipients.add(recipient);
         }
-        message.bccRecipients = recipients;
+        message.setBccRecipients(recipients);
     }
 
     private static Recipient createRecipient(String email) {
         Recipient recipient = new Recipient();
         EmailAddress emailAddress = new EmailAddress();
-        emailAddress.address = email;
-        recipient.emailAddress = emailAddress;
+        emailAddress.setAddress(email);
+        recipient.setEmailAddress(emailAddress);
         return recipient;
     }
 
     @NotNull
     public static Message createMessage(String subject, String content) {
         Message message = new Message();
-        message.subject = subject;
-        message.body = createMessageBody(content);
+        message.setSubject(subject);
+        message.setBody(createMessageBody(content));
         return message;
     }
 
     private static ItemBody createMessageBody(String content) {
         ItemBody body = new ItemBody();
-        body.contentType = BodyType.HTML;
-        body.content = content;
+        body.setContentType(BodyType.Html);
+        body.setContent(content);
         return body;
     }
 
@@ -71,19 +67,15 @@ public class MsGraphEmailUtils {
             return;
         }
 
-        LinkedList<Attachment> attachmentsList = files.stream().map(file -> {
+        List<Attachment> attachmentsList = files.stream().map(file -> {
             FileAttachment fileAttachment = new FileAttachment();
-            fileAttachment.name = file.getName();
-            fileAttachment.contentBytes = Base64.getDecoder().decode(file.getBase64Data());
-            fileAttachment.oDataType = "#microsoft.graph.fileAttachment";
-            fileAttachment.contentType = file.getContentType();
+            fileAttachment.setName(file.getName());
+            fileAttachment.setContentBytes(Base64.getDecoder().decode(file.getBase64Data()));
+            fileAttachment.setOdataType("#microsoft.graph.fileAttachment");
+            fileAttachment.setContentType(file.getContentType());
             return fileAttachment;
-        }).collect(Collectors.toCollection(LinkedList::new));
+        }).collect(Collectors.toList());
 
-        AttachmentCollectionResponse attachmentCollectionResponse = new AttachmentCollectionResponse();
-        attachmentCollectionResponse.value = attachmentsList;
-        AttachmentCollectionPage attachmentCollectionPage = new AttachmentCollectionPage(attachmentCollectionResponse, null);
-        message.attachments = attachmentCollectionPage;
+        message.setAttachments(attachmentsList);
     }
-
 }
