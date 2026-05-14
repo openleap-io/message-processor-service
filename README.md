@@ -1,3 +1,15 @@
+> # DEPRECATED
+>
+> This repository has been **merged** into the multi-module project
+> [`io.openleap.tech.com`](https://github.com/openleap-io/io.openleap.tech.com).
+> All further development happens there.
+>
+> **Where this code lives now:** `tech-com-processor-service/` module of `io.openleap.tech.com`.
+>
+> No new commits will be made here. The repository is archived as read-only history.
+
+---
+
 # message-processor-service
 
 The `Message processor service` or also referred as `MPS` is responsible for listening on new messages sent by the `MRS`
